@@ -18,7 +18,7 @@ def create_sale():
         products.append(product)
         response_message = {
             "status": "success",
-            "message": "Product entity created successfully"
+            "message": "Sale record entity created successfully"
         }
 
     return jsonify({'sale': sales}), 201, make_response(jsonify({response_message}))
