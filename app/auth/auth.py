@@ -1,3 +1,4 @@
+from flask import Flask
 from instance.config import *
 from app.models.users_models import users, Users
 
@@ -17,6 +18,10 @@ def authenticate(user_name, user_password):
 def identity(payload):
     user_id = payload['identity']
     return user_id_table.get(user_id, None)
+
+
+app = Flask(__name__)
+
 
 jwt = JWT(app, authenticate, identity)
 

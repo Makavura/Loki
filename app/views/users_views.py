@@ -27,7 +27,7 @@ def get_users():
         return make_response(jsonify({'users': users}), 200)
 
 
-@app.route('store/api/v1/users/<int:user_id>', methods=['GET'])
+@app.route('/store/api/v1/users/<int:user_id>', methods=['GET'])
 def get_user(user_id):
     for i, users in enumerate(self.users):
         if user['id'] == user_id:
