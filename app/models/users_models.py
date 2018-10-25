@@ -24,4 +24,4 @@ class Users(object):
         user = [user for user in users if user['user_id'] == user_id]
         if len(users) == 0:
             abort(404)
-        return make_response(jsonify({'user': users[0]}), 200)
+        return make_response(jsonify({'user': user[0]}), 200)

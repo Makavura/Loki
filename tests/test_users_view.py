@@ -17,7 +17,7 @@ class TestEndPoints(unittest.TestCase):
 
     def test_create_user(self):
         res = self.client.post(
-            "/store/api/v1/users",
+            "/store/api/v1/uzers",
             data=json.dumps(self.data),
             headers={"content-type": "application/json"}
         )
@@ -28,7 +28,7 @@ class TestEndPoints(unittest.TestCase):
 
     def test_create_user_message(self):
         res = self.client.post(
-            "/store/api/v1/users",
+            "/store/api/v1/uzers",
             data=json.dumps(self.data),
             headers={"content-type": "application/json"}
         )
@@ -36,14 +36,14 @@ class TestEndPoints(unittest.TestCase):
 
     def test_get_users(self):
         res = self.client.get(
-            "/store/api/v1/users",
+            "/store/api/v1/uzers",
             headers={"content-type": "application/json"}
         )
         self.assertEqual(res.status_code, 200)
 
     def test_get_user(self):
         res = self.client.get(
-            "/store/api/v1/users/1",
+            "/store/api/v1/uzers/1",
             headers={"content-type": "application/json"}
         )
         self.assertEqual(res.status_code, 200)

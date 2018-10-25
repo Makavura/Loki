@@ -15,7 +15,7 @@ class TestEndPoints(unittest.TestCase):
 
     def test_create_sale(self):
         res = self.client.post(
-            "/store/api/v1/sales",
+            "/store/api/v1/cales",
             data=json.dumps(self.data),
             headers={"content-type": "application/json"}
         )
@@ -26,7 +26,7 @@ class TestEndPoints(unittest.TestCase):
 
     def test_create_sale_message(self):
         res = self.client.post(
-            "/store/api/v1/sales",
+            "/store/api/v1/cales",
             data=json.dumps(self.data),
             headers={"content-type": "application/json"}
         )
@@ -34,14 +34,14 @@ class TestEndPoints(unittest.TestCase):
 
     def test_get_sales(self):
         res = self.client.get(
-            "/store/api/v1/sales",
+            "/store/api/v1/cales",
             headers={"content-type": "application/json"}
         )
         self.assertEqual(res.status_code, 200)
 
     def test_get_sale(self):
         res = self.client.get(
-            "/store/api/v1/sales/1",
+            "/store/api/v1/cales/1",
             headers={"content-type": "application/json"}
         )
         self.assertEqual(res.status_code, 200)

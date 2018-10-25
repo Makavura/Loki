@@ -19,7 +19,7 @@ class TestEndPoints(unittest.TestCase):
 
     def test_create_product(self):
         res = self.client.post(
-            "/store/api/v1/products",
+            "/store/api/v1/produkts",
             data=json.dumps(self.data),
             headers={"content-type": "application/json"}
         )
@@ -30,7 +30,7 @@ class TestEndPoints(unittest.TestCase):
 
     def test_create_product_message(self):
         res = self.client.post(
-            "/store/api/v1/products",
+            "/store/api/v1/produkts",
             data=json.dumps(self.data),
             headers={"content-type": "application/json"}
         )
@@ -38,14 +38,14 @@ class TestEndPoints(unittest.TestCase):
 
     def test_get_products(self):
         res = self.client.get(
-            "/store/api/v1/products",
+            "/store/api/v1/produkts",
             headers={"content-type": "application/json"}
         )
         self.assertEqual(res.status_code, 200)
 
     def test_get_product(self):
         res = self.client.get(
-            "/store/api/v1/products/1",
+            "/store/api/v1/produkts/1",
             headers={"content-type": "application/json"}
         )
         self.assertEqual(res.status_code, 200)

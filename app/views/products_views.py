@@ -1,12 +1,12 @@
-from flask import make_response, jsonify, Flask, request
+from flask import make_response, jsonify, Flask, request, Blueprint
 from app.models.products_models import products, Products
 
-app = Flask(__name__)
+produkts = Blueprint('produkts', __name__, url_prefix='/store/api/v1')
 
 new_product_info = Products('product_name', 'product_quantity', 'product_price', 'product_id')
 
 
-@app.route('/store/api/v1/products', methods=['POST'])
+@produkts.route('/produkts', methods=['POST'])
 def create_product():
         new_product = new_product_info.create_product()
         response_message = {
@@ -16,13 +16,13 @@ def create_product():
         return jsonify(new_product, response_message), 201
 
 
-@app.route('/store/api/v1/products', methods=['GET'])
+@produkts.route('/produkts', methods=['GET'])
 def get_products():
         response = new_product_info.get_products()
         return jsonify(response), 200
 
 
-@app.route('/store/api/v1/products/<int:product_id>', methods=['GET'])
+@produkts.route('/produkts/<int:product_id>', methods=['GET'])
 def get_product(product_id):
         return jsonify(products[product_id])
 

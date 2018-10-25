@@ -1,12 +1,12 @@
-from flask import make_response, jsonify, Flask, request
+from flask import make_response, jsonify, Flask, request, Blueprint
 from app.models.users_models import users, Users
 
-app = Flask(__name__)
+uzers = Blueprint('uzers', __name__, url_prefix='/store/api/v1')
 
 new_user_info = Users('user_name', 'user_type', 'user_password', 'user_id')
 
 
-@app.route('/store/api/v1/users', methods=['POST'])
+@uzers.route('/uzers', methods=['POST'])
 def create_user():
         new_user = new_user_info.create_user()
         response_message = {
@@ -16,12 +16,12 @@ def create_user():
         return jsonify(new_user, response_message), 201
 
 
-@app.route('/store/api/v1/users', methods=['GET'])
+@uzers.route('/uzers', methods=['GET'])
 def get_users():
         response = new_user_info.get_users()
         return jsonify(response), 200
 
 
-@app.route('/store/api/v1/users/<int:user_id>', methods=['GET'])
+@uzers.route('/uzers/<int:user_id>', methods=['GET'])
 def get_user(user_id):
         return jsonify(users[user_id])
