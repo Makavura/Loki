@@ -12,17 +12,17 @@ def create_product():
             "status": "success",
             "message": "Product entity successfully created"
         }
-        return make_response(jsonify(response_message)), jsonify({'product': new_product})
+        return make_response(jsonify(response_message)), jsonify({new_product})
 
 
 @app.route('/store/api/v1/products', methods=['GET'])
 def get_products():
         response = get_products()
-        return make_response(jsonify({'products': response}), 200)
+        return make_response(jsonify({response}), 200)
 
 
 @app.route('/store/api/v1/products/<int:product_id>', methods=['GET'])
 def get_product():
         response = get_product()
-        return make_response(jsonify({'product': response}), 200)
+        return make_response(jsonify({response}), 200)
 
