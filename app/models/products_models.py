@@ -21,8 +21,6 @@ class Products(object):
         return products
 
     def get_product(self, product_id):
-        if product_id in products:
-            return products[product_id]
         product = [product for product in products if product['product_id'] == product_id]
         if len(product) == 0:
             abort(404)
