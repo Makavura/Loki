@@ -6,30 +6,23 @@ app = Flask(__name__)
 
 @app.route('/store/api/v1/products', methods=['POST'])
 def create_product():
-        product_id = len(products) + 1
-        product = {
-            'id': product_id,
-            'description': request.json.get('description', "",),
-            'price': "" ,
-            'quantity': ""
-        }
-
-        products.append(product)
+        data = request.json()
+        new_product = data.create_products()
         response_message = {
             "status": "success",
             "message": "Product entity successfully created"
         }
-        return make_response(jsonify(response_message))
+        return make_response(jsonify(response_message)), jsonify({'product': new_product})
 
 
 @app.route('/store/api/v1/products', methods=['GET'])
 def get_products():
-        return make_response(jsonify({'products': products}), 200)
+        response = get_products()
+        return make_response(jsonify({'products': response}), 200)
 
 
 @app.route('/store/api/v1/products/<int:product_id>', methods=['GET'])
-def get_product(product_id):
-        product = [product for product in products if product['id'] == product_id]
-        if len(product) == 0:
-            abort(404)
-        return make_response(jsonify({'product': product[0]}), 200)
+def get_product():
+        response = get_product()
+        return make_response(jsonify({'product': response}), 200)
+
