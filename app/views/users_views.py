@@ -6,8 +6,9 @@ app = Flask(__name__)
 
 @app.route('/store/api/v1/users', methods=['POST'])
 def create_user():
+        user_id = len(users) + 1
         user = {
-            'user_id': users[-1]['id'] + 1,
+            'user_id': user_id,
             'user_name':  "",
             'user_email': "" ,
             'user_password': "",
@@ -19,7 +20,7 @@ def create_user():
             "status": "success",
             "message": "user account successfully created"
         }
-        return jsonify({users}), 201, make_response(jsonify({response_message}))
+        return make_response(jsonify(response_message))
 
 
 @app.route('/store/api/v1/users', methods=['GET'])
