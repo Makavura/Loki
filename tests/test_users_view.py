@@ -23,6 +23,9 @@ class TestEndPoints(unittest.TestCase):
             headers={"content-type": "application/json"}
         )
         self.assertEqual(res.status_code, 200)
+        self.assertNotEqual(res.status_code, 500)  # test for server error
+        self.assertNotEqual(res.status_code, 400)  # test for bad request
+        self.assertNotEqual(res.status_code, 403)  # test for forbidden
 
     def test_create_user_message(self):
         data = {
