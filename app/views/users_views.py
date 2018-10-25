@@ -8,7 +8,7 @@ app = Flask(__name__)
 def create_user():
         user_id = len(users) + 1
         user = {
-            'user_id': user_id,
+            'id': user_id,
             'user_name':  "",
             'user_email': "" ,
             'user_password': "",
@@ -30,13 +30,7 @@ def get_users():
 
 @app.route('/store/api/v1/users/<int:user_id>', methods=['GET'])
 def get_user(user_id):
-    for i, users in enumerate(self.users):
-        if user['id'] == user_id:
-            return make_response(jsonify(user))
-        elif user['id'] != user_id:
-                print("access error")
-                response_message = {
-                    "status": "fail",
-                    "message": "non-existent user account "
-                }
-        return make_response(jsonify(response_message))
+    user = [user for user in users if user['id'] == user_id]
+    if len(user) == 0:
+        abort(404)
+    return make_response(jsonify({'user': user[0]}), 200)

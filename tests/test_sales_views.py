@@ -38,3 +38,17 @@ class TestEndPoints(unittest.TestCase):
         )
         result = json.loads(res.data.decode('utf-8'))
         self.assertEqual(result["message"], "Sale record created successfully")
+
+    def test_get_sales(self):
+        res = self.client.get(
+            "/store/api/v1/sales",
+            headers={"content-type": "application/json"}
+        )
+        self.assertEqual(res.status_code, 200)
+
+    def test_get_sale(self):
+        res = self.client.get(
+            "/store/api/v1/sales/1",
+            headers={"content-type": "application/json"}
+        )
+        self.assertEqual(res.status_code, 200)

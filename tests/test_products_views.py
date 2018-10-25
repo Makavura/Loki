@@ -41,3 +41,18 @@ class TestEndPoints(unittest.TestCase):
         result = json.loads(res.data.decode('utf-8'))
         self.assertEqual(result["message"], "Product entity successfully created")
 
+    def test_get_products(self):
+        res = self.client.get(
+            "/store/api/v1/products",
+            headers={"content-type": "application/json"}
+        )
+        self.assertEqual(res.status_code, 200)
+
+    def test_get_product(self):
+        res = self.client.get(
+            "/store/api/v1/products/1",
+            headers={"content-type": "application/json"}
+        )
+        self.assertEqual(res.status_code, 200)
+
+

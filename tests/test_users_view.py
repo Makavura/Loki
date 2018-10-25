@@ -41,3 +41,17 @@ class TestEndPoints(unittest.TestCase):
         )
         result = json.loads(res.data.decode('utf-8'))
         self.assertEqual(result["message"], "user account successfully created")
+
+    def test_get_users(self):
+        res = self.client.get(
+            "/store/api/v1/users",
+            headers={"content-type": "application/json"}
+        )
+        self.assertEqual(res.status_code, 200)
+
+    def test_get_user(self):
+        res = self.client.get(
+            "/store/api/v1/users/1",
+            headers={"content-type": "application/json"}
+        )
+        self.assertEqual(res.status_code, 200)

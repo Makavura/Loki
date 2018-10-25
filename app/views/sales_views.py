@@ -22,8 +22,8 @@ def create_sale():
 
 
 @app.route('/store/api/v1/sales', methods=['GET'])
-def get_sales(self):
-    return jsonify(self.sales), 200
+def get_sales():
+    return make_response(jsonify({'sales': sales}), 200)
 
 
 @app.route('/store/api/v1/sales/<int:sale_id>', methods=['GET'])
