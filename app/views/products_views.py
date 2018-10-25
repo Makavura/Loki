@@ -1,4 +1,4 @@
-from flask import make_response, jsonify, Flask
+from flask import make_response, jsonify, Flask, request
 from app.models.products_models import products, Products
 
 app = Flask(__name__)
@@ -6,10 +6,9 @@ app = Flask(__name__)
 
 @app.route('/store/api/v1/products', methods=['POST'])
 def create_product():
-        if not request.json or 'description' not in 'description' in request.json:
-            abort(400)
+        product_id = len(products) + 1
         product = {
-            'id': products[-1]['id'] + 1,
+            'id': product_id,
             'description': request.json.get('description', "",),
             'price': "" ,
             'quantity': ""
@@ -18,9 +17,9 @@ def create_product():
         products.append(product)
         response_message = {
             "status": "success",
-            "message": "Product entity created successfully"
+            "message": "Product entity successfully created"
         }
-        return jsonify({'product': products}), 201, make_response(jsonify({response_message}))
+        return make_response(jsonify(response_message))
 
 
 @app.route('/store/api/v1/products', methods=['GET'])
