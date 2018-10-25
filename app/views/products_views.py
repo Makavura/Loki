@@ -3,26 +3,26 @@ from app.models.products_models import products, Products
 
 app = Flask(__name__)
 
+new_product_info = Products('product_name', 'product_quantity', 'product_price', 'product_id')
+
 
 @app.route('/store/api/v1/products', methods=['POST'])
 def create_product():
-        data = request.json()
-        new_product = data.create_products()
+        new_product = new_product_info.create_product()
         response_message = {
             "status": "success",
             "message": "Product entity successfully created"
         }
-        return make_response(jsonify(response_message)), jsonify({new_product})
+        return jsonify(new_product, response_message), 201
 
 
 @app.route('/store/api/v1/products', methods=['GET'])
 def get_products():
-        response = get_products()
-        return make_response(jsonify({response}), 200)
+        response = new_product_info.get_products()
+        return jsonify(response), 200
 
 
 @app.route('/store/api/v1/products/<int:product_id>', methods=['GET'])
-def get_product():
-        response = get_product()
-        return make_response(jsonify({response}), 200)
+def get_product(product_id):
+        return jsonify(products[product_id])
 
