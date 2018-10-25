@@ -22,6 +22,4 @@ class Products(object):
 
     def get_product(self, product_id):
         product = [product for product in products if product['product_id'] == product_id]
-        if len(products) == 0:
-            abort(404)
         return make_response(jsonify({'product': product[0]}), 200)

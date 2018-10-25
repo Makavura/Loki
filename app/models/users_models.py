@@ -22,6 +22,4 @@ class Users(object):
 
     def get_user(self, user_id):
         user = [user for user in users if user['user_id'] == user_id]
-        if len(users) == 0:
-            abort(404)
         return make_response(jsonify({'user': user[0]}), 200)

@@ -1,3 +1,4 @@
+'''
 from flask import Flask
 from instance.config import *
 from app.models.users_models import users, Users
@@ -29,3 +30,4 @@ jwt = JWT(app, authenticate, identity)
 @jwt_required()
 def protected():
     return '%s' % current_identity
+'''
