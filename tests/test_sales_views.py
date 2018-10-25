@@ -25,7 +25,6 @@ class TestEndPoints(unittest.TestCase):
         self.assertNotEqual(res.status_code, 400)#test for bad request
         self.assertNotEqual(res.status_code, 403)#test for forbidden
 
-
     def test_create_sale_message(self):
         data = {
             "attendant": "cooper",
@@ -52,3 +51,10 @@ class TestEndPoints(unittest.TestCase):
             headers={"content-type": "application/json"}
         )
         self.assertEqual(res.status_code, 200)
+
+    def test_if_requested_sale_is_in_sales(self):
+        res = self.client.get(
+            "/store/api/v1/sales/1",
+            headers={"content-type": "application/json"}
+        )
+        self.assertIn('{"attendant":"cooper","description":"bazingA!","id":1}',str(res.data))

@@ -55,4 +55,9 @@ class TestEndPoints(unittest.TestCase):
         )
         self.assertEqual(res.status_code, 200)
 
-
+    def test_if_requested_product_is_in_products(self):
+        res = self.client.get(
+            "/store/api/v1/products/1",
+            headers={"content-type": "application/json"}
+        )
+        self.assertIn('{"product":{"description":"sanchezium","id":1,"price":"","quantity":""}}',str(res.data))

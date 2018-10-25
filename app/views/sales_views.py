@@ -32,4 +32,3 @@ def get_sale(sale_id):
     if len(sale) == 0:
         abort(404)
     return make_response(jsonify({'sale': sale[0]}), 200)
-
