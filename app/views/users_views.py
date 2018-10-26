@@ -1,8 +1,5 @@
 from flask import make_response, jsonify, Flask, request, Blueprint, make_response
 from app.models.users_models import users, Users
-from flask_httpauth import HTTPBasicAuth
-auth = HTTPBasicAuth()
-from app.auth.auth import *
 
 uzers = Blueprint('uzers', __name__, url_prefix='/store/api/v1')
 

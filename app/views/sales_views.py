@@ -1,8 +1,5 @@
 from flask import make_response, jsonify, Flask, request, Blueprint, make_response
 from app.models.sales_models import sales, Sales
-from flask_httpauth import HTTPBasicAuth
-auth = HTTPBasicAuth()
-from app.auth.auth import *
 
 cales = Blueprint('cales', __name__, url_prefix='/store/api/v1')
 
