@@ -46,5 +46,12 @@ class TestEndPoints(unittest.TestCase):
         )
         self.assertEqual(res.status_code, 200)
 
+    def test_if_requested_sale_is_in_sales(self):
+        res = self.client.get(
+            "/store/api/v1/cales/1",
+            headers={"content-type": "application/json"}
+        )
+        self.assertIn('{"attendant":"ulalala","sale_id":"1"}',str(res.data))
+
     def teardown(self):
         self.app_context.pop()

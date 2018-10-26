@@ -2,15 +2,14 @@
 products = []
 
 class Products(object):
-    def __init__(self, product_name, product_price, product_quantity, product_id):
+    def __init__(self, product_name, product_price, product_quantity):
         self.product_name = product_name
         self.product_price = product_price
         self.product_quantity = product_quantity
-        self.product_id = product_id
 
     def create_product(self):
-        new_product_info= {}
-        new_product_info['product_id'] = len(products) + 1
+        new_product_info = {}
+        new_product_info['product_id'] = str(len(products)+1)
         new_product_info['product_name'] = self.product_name
         new_product_info['product_quantity'] = self.product_quantity
         new_product_info['product_price'] = self.product_price

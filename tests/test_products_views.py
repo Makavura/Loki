@@ -53,11 +53,9 @@ class TestEndPoints(unittest.TestCase):
     def teardown(self):
         self.app_context.pop()
 
-    '''
-        def test_if_requested_product_is_in_products(self):
+    def test_if_requested_product_is_in_products(self):
         res = self.client.get(
-            "/store/api/v1/products/1",
+            "/store/api/v1/produkts/1",
             headers={"content-type": "application/json"}
         )
-        self.assertIn('{"product_name": "residentjoke","product_description": "sanchezium","product_price": "777","product_quantity": "4"}',str(res.data))
-    '''
+        self.assertIn('{"product_id":"1","product_name":"residentjoke","product_price":"4","product_quantity":"777"}',str(res.data))

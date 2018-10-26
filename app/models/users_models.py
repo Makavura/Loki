@@ -2,15 +2,14 @@
 users = []
 
 class Users(object):
-    def __init__(self, user_name, user_type, user_password, user_id):
+    def __init__(self, user_name, user_type, user_password):
         self.user_name = user_name
         self.user_type = user_type
         self.user_password = user_password
-        self.user_id = user_id
 
     def create_user(self):
-        new_user_info= {}
-        new_user_info['product_id'] = len(users) + 1
+        new_user_info = {}
+        new_user_info['user_id'] = str(len(users)+1)
         new_user_info['user_name'] = self.user_name
         new_user_info['user_type'] = self.user_type
         new_user_info['user_password'] = self.user_password

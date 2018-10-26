@@ -1,13 +1,20 @@
-from flask import make_response, jsonify, Flask, request, Blueprint
+from flask import make_response, jsonify, Flask, request, Blueprint, make_response
 from app.models.products_models import products, Products
+from flask_httpauth import HTTPBasicAuth
+auth = HTTPBasicAuth()
+from app.auth.auth import *
 
 produkts = Blueprint('produkts', __name__, url_prefix='/store/api/v1')
 
-new_product_info = Products('product_name', 'product_quantity', 'product_price', 'product_id')
 
 
 @produkts.route('/produkts', methods=['POST'])
 def create_product():
+        data = request.get_json()
+        product_name = data['product_name']
+        product_quantity = data['product_quantity']
+        product_price = data['product_price']
+        new_product_info = Products(product_name, product_quantity, product_price)
         new_product = new_product_info.create_product()
         response_message = {
             "status": "success",
@@ -18,11 +25,10 @@ def create_product():
 
 @produkts.route('/produkts', methods=['GET'])
 def get_products():
-        response = new_product_info.get_products()
-        return jsonify(response), 200
+        return jsonify(products), 200
 
 
 @produkts.route('/produkts/<int:product_id>', methods=['GET'])
 def get_product(product_id):
-        return jsonify(products[product_id])
+        return jsonify(products[int(product_id)-1])
 

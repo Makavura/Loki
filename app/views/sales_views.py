@@ -1,13 +1,18 @@
-from flask import make_response, jsonify, Flask, request, Blueprint
+from flask import make_response, jsonify, Flask, request, Blueprint, make_response
 from app.models.sales_models import sales, Sales
+from flask_httpauth import HTTPBasicAuth
+auth = HTTPBasicAuth()
+from app.auth.auth import *
 
 cales = Blueprint('cales', __name__, url_prefix='/store/api/v1')
 
-new_sale_info = Sales('attendant', 'sale_id')
 
 
 @cales.route('/cales', methods=['POST'])
 def create_sale():
+        data = request.get_json()
+        attendant = data['attendant']
+        new_sale_info = Sales(attendant)
         new_sale = new_sale_info.create_sale()
         response_message = {
             "status": "success",
@@ -18,10 +23,10 @@ def create_sale():
 
 @cales.route('/cales', methods=['GET'])
 def get_sales():
-        response = new_sale_info.get_sales()
-        return jsonify(response), 200
+        return jsonify(sales), 200
 
 
 @cales.route('/cales/<int:sale_id>', methods=['GET'])
 def get_sale(sale_id):
-        return jsonify(sales[sale_id]), 200
+        return jsonify(sales[int(sale_id)-1])
+

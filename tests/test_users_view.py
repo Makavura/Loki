@@ -48,5 +48,12 @@ class TestEndPoints(unittest.TestCase):
         )
         self.assertEqual(res.status_code, 200)
 
+    def test_if_requested_user_is_in_users(self):
+        res = self.client.get(
+            "/store/api/v1/uzers/1",
+            headers={"content-type": "application/json"}
+        )
+        self.assertIn('{"user_id":"1","user_name":"rickiestrick","user_password":"mortyb@#%","user_type":"rikitikitavi"}',str(res.data))
+
     def teardown(self):
         self.app_context.pop()
