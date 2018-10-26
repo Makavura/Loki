@@ -4,5 +4,6 @@
 
 # Loki
 Endpoints for Store Manager App
+https://documenter.getpostman.com/view/5220160/RWgxvvBb
 
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/729ae7af67468237e903)
