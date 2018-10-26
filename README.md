@@ -4,4 +4,4 @@
 
 # Loki [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/b3b116ebccbbcb909d5f)
 
-[Endpoints for Store Manager App](https://documenter.getpostman.com/view/5220160/RWgxvvBb)
+[Endpoints for Store Manager App](https://documenter.getpostman.com/view/5220160/RzZ1q3Ad)
